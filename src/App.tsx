@@ -8,10 +8,9 @@ import {
   Header,
   Group,
   usePlatform,
-  Cell,
-  CardGrid,
 } from "@vkontakte/vkui";
 import TrackCard from "./components/TrackCard/TrackCard";
+import "./App.css";
 
 const App = () => {
   const platform = usePlatform();
@@ -26,13 +25,7 @@ const App = () => {
             <Panel id="main">
               <PanelHeader color="secondary">VK audio</PanelHeader>
               <Group header={<Header>Список аудио</Header>}>
-                <section
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "1em",
-                  }}
-                >
+                <section className="card-list">
                   <TrackCard
                     name="Brain Damage"
                     author="Pink Floyd"

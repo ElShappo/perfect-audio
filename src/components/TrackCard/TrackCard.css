@@ -1,3 +1,35 @@
-.card {
-  padding: 0px 16px 0 16px;
+.audio-card {
+  color: black;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.audio-card > .track-icon {
+  padding: 40px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.audio-card > .titles {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  padding-right: 6em;
+}
+
+.audio-card > .titles > :is(h2, h3) {
+  margin: 0;
+}
+
+.audio-card > .titles > h3 {
+  color: #818c99;
+}
+
+.audio-card > .duration {
+  flex-grow: 1;
+  text-align: right;
+  color: #818c99;
 }

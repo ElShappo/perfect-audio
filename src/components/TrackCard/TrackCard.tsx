@@ -1,7 +1,10 @@
-import { Card, Image } from "@vkontakte/vkui";
-import CardBasic from "../../assets/card_basic.svg";
-import SampleAudio from "../../assets/keys-of-moon-the-success(chosic.com).mp3";
+import { Card, IconButton, Image, VisuallyHidden } from "@vkontakte/vkui";
+import CardBasic from "../../assets/card_basic.svg?react";
+import CardPlaying from "../../assets/card_playing.svg?react";
 import "./TrackCard.css";
+import { Icon16MoreVertical } from "@vkontakte/icons";
+import SampleAudio from "../../assets/keys-of-moon-the-success(chosic.com).mp3";
+import { useRef, useState } from "react";
 
 type TrackCardProps = {
   name: string;
@@ -10,20 +13,47 @@ type TrackCardProps = {
   image?: string;
 };
 const TrackCard = ({ name, author, duration, image }: TrackCardProps) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  const handlePlay = () => {
+    if (isPlaying) {
+      (audioRef.current! as HTMLAudioElement).pause();
+    } else {
+      (audioRef.current! as HTMLAudioElement).play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
-    <Card style={{ display: "flex", alignItems: "center", gap: "1em" }}>
-      <Image src={CardBasic} size={80}></Image>
-      <div>
-        <h2>{name}</h2>
-        <h3>{author}</h3>
-      </div>
-      <div>
-        <audio controls>
-          <source src={SampleAudio} type="audio/mp3" />
-          Ваш бразуер не поддерживает воспроизведение аудио
-        </audio>
-      </div>
-    </Card>
+    <>
+      <audio ref={audioRef}>
+        <source src={SampleAudio}></source>
+      </audio>
+      <Card className="audio-card">
+        <IconButton
+          label="Слушать/Остановить"
+          className="track-icon"
+          onClick={handlePlay}
+        >
+          <VisuallyHidden>{name}</VisuallyHidden>
+          {isPlaying ? (
+            <CardPlaying height={80} width={80} />
+          ) : (
+            <CardBasic height={80} width={80} />
+          )}
+        </IconButton>
+        <article className="titles">
+          <h2>{name}</h2>
+          <h3>{author}</h3>
+        </article>
+        <article className="duration">{duration}</article>
+        <IconButton>
+          <VisuallyHidden>Меню</VisuallyHidden>
+          <Icon16MoreVertical color="#2688EB" />
+        </IconButton>
+      </Card>
+    </>
   );
 };
 
