@@ -27,23 +27,18 @@ const App = () => {
               <Group header={<Header>Список аудио</Header>}>
                 <section className="card-list">
                   <TrackCard
-                    name="Brain Damage"
-                    author="Pink Floyd"
+                    name="Personal Cathedrals"
+                    author="Aly & AJ"
                     duration="3:46"
                   />
                   <TrackCard
-                    name="Brain Damage"
-                    author="Pink Floyd"
+                    name="Personal Cathedrals"
+                    author="Aly & AJ"
                     duration="3:46"
                   />
                   <TrackCard
-                    name="Brain Damage"
-                    author="Pink Floyd"
-                    duration="3:46"
-                  />
-                  <TrackCard
-                    name="Brain Damage"
-                    author="Pink Floyd"
+                    name="Personal Cathedrals"
+                    author="Aly & AJ"
                     duration="3:46"
                   />
                 </section>

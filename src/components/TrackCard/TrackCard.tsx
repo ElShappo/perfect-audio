@@ -1,11 +1,10 @@
-import { Card, IconButton, Image, VisuallyHidden } from "@vkontakte/vkui";
-import CardBasic from "../../assets/card_basic.svg?react";
-import CardPlaying from "../../assets/card_playing.svg?react";
+import { Card, IconButton, VisuallyHidden } from "@vkontakte/vkui";
+import CardIcon from "../../assets/card_icon.svg";
 import AudioAnimation from "../../assets/audio-animation.mp4";
-import "./TrackCard.css";
 import { Icon16MoreVertical } from "@vkontakte/icons";
-import SampleAudio from "../../assets/keys-of-moon-the-success(chosic.com).mp3";
+import SampleAudio from "../../assets/personal-cathedrals.mp3";
 import { useRef, useState } from "react";
+import "./TrackCard.css";
 
 type TrackCardProps = {
   name: string;
@@ -26,9 +25,13 @@ const TrackCard = ({ name, author, duration, image }: TrackCardProps) => {
     setIsPlaying(!isPlaying);
   };
 
+  const handleEnded = () => {
+    setIsPlaying(false);
+  };
+
   return (
     <>
-      <audio ref={audioRef}>
+      <audio ref={audioRef} onEnded={handleEnded}>
         <source src={SampleAudio}></source>
       </audio>
       <Card className="audio-card">
@@ -40,17 +43,13 @@ const TrackCard = ({ name, author, duration, image }: TrackCardProps) => {
           <VisuallyHidden>{name}</VisuallyHidden>
           {isPlaying ? (
             <div className="container">
-              <video
-                src={AudioAnimation}
-                loop
-                autoPlay
-                height={80}
-                width={80}
-              ></video>
-              <CardBasic height={79} width={80} />
+              <video src={AudioAnimation} loop autoPlay></video>
+              <img src={image || CardIcon} height={50} width={50}></img>
+              {/* <CardIcon height={50} width={50} /> */}
             </div>
           ) : (
-            <CardBasic height={80} width={80} />
+            <img src={image || CardIcon} height={50} width={50}></img>
+            // <CardIcon height={50} width={50} />
           )}
         </IconButton>
         <article className="titles">
