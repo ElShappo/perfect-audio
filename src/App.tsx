@@ -23,8 +23,19 @@ const App = () => {
         <SplitCol autoSpaced>
           <View activePanel="main">
             <Panel id="main">
-              <PanelHeader color="secondary">VK audio</PanelHeader>
-              <Group header={<Header>Список аудио</Header>}>
+              <PanelHeader color="secondary">
+                <div className="header">
+                  <img src="audio.png" height={32} width={32}></img>
+                  <h1 className="title">Perfect Audio</h1>
+                </div>
+              </PanelHeader>
+              <Group
+                header={
+                  <Header className="card-list-title" size="large">
+                    Список треков
+                  </Header>
+                }
+              >
                 <section className="card-list">
                   <TrackCard
                     name="Personal Cathedrals"
