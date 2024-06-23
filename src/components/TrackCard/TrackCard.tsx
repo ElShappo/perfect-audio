@@ -1,6 +1,7 @@
 import { Card, IconButton, Image, VisuallyHidden } from "@vkontakte/vkui";
 import CardBasic from "../../assets/card_basic.svg?react";
 import CardPlaying from "../../assets/card_playing.svg?react";
+import AudioAnimation from "../../assets/audio-animation.mp4";
 import "./TrackCard.css";
 import { Icon16MoreVertical } from "@vkontakte/icons";
 import SampleAudio from "../../assets/keys-of-moon-the-success(chosic.com).mp3";
@@ -38,7 +39,16 @@ const TrackCard = ({ name, author, duration, image }: TrackCardProps) => {
         >
           <VisuallyHidden>{name}</VisuallyHidden>
           {isPlaying ? (
-            <CardPlaying height={80} width={80} />
+            <div className="container">
+              <video
+                src={AudioAnimation}
+                loop
+                autoPlay
+                height={80}
+                width={80}
+              ></video>
+              <CardBasic height={79} width={80} />
+            </div>
           ) : (
             <CardBasic height={80} width={80} />
           )}
