@@ -2,17 +2,13 @@ import { Card, IconButton, VisuallyHidden } from "@vkontakte/vkui";
 import CardIcon from "../../assets/card_icon.svg";
 import AudioAnimation from "../../assets/audio-animation.mp4";
 import { Icon16MoreVertical } from "@vkontakte/icons";
-import SampleAudio from "../../assets/personal-cathedrals.mp3";
 import { useRef, useState } from "react";
+import { Track } from "../../types";
 import "./TrackCard.css";
 
-type TrackCardProps = {
-  name: string;
-  author: string;
-  duration: string;
-  image?: string;
-};
-const TrackCard = ({ name, author, duration, image }: TrackCardProps) => {
+type TrackCardProps = Track;
+
+const TrackCard = ({ name, author, duration, file, image }: TrackCardProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
@@ -32,7 +28,7 @@ const TrackCard = ({ name, author, duration, image }: TrackCardProps) => {
   return (
     <>
       <audio ref={audioRef} onEnded={handleEnded}>
-        <source src={SampleAudio}></source>
+        <source src={file}></source>
       </audio>
       <Card className="audio-card">
         <IconButton
@@ -45,11 +41,9 @@ const TrackCard = ({ name, author, duration, image }: TrackCardProps) => {
             <div className="container">
               <video src={AudioAnimation} loop autoPlay></video>
               <img src={image || CardIcon} height={50} width={50}></img>
-              {/* <CardIcon height={50} width={50} /> */}
             </div>
           ) : (
             <img src={image || CardIcon} height={50} width={50}></img>
-            // <CardIcon height={50} width={50} />
           )}
         </IconButton>
         <article className="titles">

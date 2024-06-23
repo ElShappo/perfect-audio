@@ -11,6 +11,7 @@ import {
 } from "@vkontakte/vkui";
 import TrackCard from "./components/TrackCard/TrackCard";
 import "./App.css";
+import { tracks } from "./constants";
 
 const App = () => {
   const platform = usePlatform();
@@ -37,21 +38,16 @@ const App = () => {
                 }
               >
                 <section className="card-list">
-                  <TrackCard
-                    name="Personal Cathedrals"
-                    author="Aly & AJ"
-                    duration="3:46"
-                  />
-                  <TrackCard
-                    name="Personal Cathedrals"
-                    author="Aly & AJ"
-                    duration="3:46"
-                  />
-                  <TrackCard
-                    name="Personal Cathedrals"
-                    author="Aly & AJ"
-                    duration="3:46"
-                  />
+                  {tracks.map((track) => (
+                    <TrackCard
+                      key={`${track.author}-${track.name}`}
+                      name={track.name}
+                      author={track.author}
+                      duration={track.duration}
+                      file={track.file}
+                      image={track.image}
+                    />
+                  ))}
                 </section>
               </Group>
             </Panel>

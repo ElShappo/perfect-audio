@@ -19,6 +19,10 @@
   display: inline-block;
 }
 
+img {
+  border-radius: 0.5em;
+}
+
 .container video {
   border-radius: 0.7em;
   position: absolute;
@@ -26,7 +30,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 1; /* Set the desired opacity level */
+  opacity: 0.65; /* Set the desired opacity level */
 }
 
 .audio-card > .titles {
@@ -42,7 +46,7 @@
 }
 
 .audio-card > .titles > h2 {
-  font-size: 1.3em;
+  font-size: 1.25em;
 }
 
 .audio-card > .titles > h3 {
