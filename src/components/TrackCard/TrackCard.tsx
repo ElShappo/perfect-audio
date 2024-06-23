@@ -50,11 +50,13 @@ const TrackCard = ({ name, author, duration, file, image }: TrackCardProps) => {
           <h2>{name}</h2>
           <h3>{author}</h3>
         </article>
-        <article className="duration">{duration}</article>
-        <IconButton>
-          <VisuallyHidden>Меню</VisuallyHidden>
-          <Icon16MoreVertical color="#2688EB" />
-        </IconButton>
+        <div className="duration-with-button">
+          <article className="duration">{duration}</article>
+          <IconButton>
+            <VisuallyHidden>Меню</VisuallyHidden>
+            <Icon16MoreVertical color="#2688EB" />
+          </IconButton>
+        </div>
       </Card>
     </>
   );

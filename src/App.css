@@ -16,7 +16,31 @@
 .card-list {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: stretch;
   gap: 1.5em;
   padding: 3em;
+}
+
+@media (min-width: 600px) {
+  .card-list {
+    width: 470px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-list {
+    width: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  .card-list {
+    width: 300px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card-list {
+    width: 250px;
+  }
 }

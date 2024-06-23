@@ -2,6 +2,7 @@
   color: black;
   background-color: white;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
   padding: 8px;
@@ -54,7 +55,13 @@ img {
   font-size: 1em;
 }
 
-.audio-card > .duration {
+.audio-card > .duration-with-button {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.audio-card > .duration-with-button > .duration {
   flex-grow: 1;
   text-align: right;
   color: #818c99;
